@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{C737365D-8782-42DE-AB91-62E404AC82E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marktguru.WebAPI", "Backend\Marktguru.WebAPI\Marktguru.WebAPI.csproj", "{08236B97-ACD5-439C-AC1E-189BA4EF2557}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marktguru.BusinessLayer", "Backend\Marktguru.BusinessLayer\Marktguru.BusinessLayer.csproj", "{76092FCE-B67D-476B-9B59-F6F5F92325D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marktguru.DataLayer", "Backend\Marktguru.DataLayer\Marktguru.DataLayer.csproj", "{2883F573-D096-4C32-964F-EE57FC4B823D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08236B97-ACD5-439C-AC1E-189BA4EF2557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08236B97-ACD5-439C-AC1E-189BA4EF2557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08236B97-ACD5-439C-AC1E-189BA4EF2557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08236B97-ACD5-439C-AC1E-189BA4EF2557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76092FCE-B67D-476B-9B59-F6F5F92325D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76092FCE-B67D-476B-9B59-F6F5F92325D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76092FCE-B67D-476B-9B59-F6F5F92325D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76092FCE-B67D-476B-9B59-F6F5F92325D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2883F573-D096-4C32-964F-EE57FC4B823D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2883F573-D096-4C32-964F-EE57FC4B823D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2883F573-D096-4C32-964F-EE57FC4B823D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2883F573-D096-4C32-964F-EE57FC4B823D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08236B97-ACD5-439C-AC1E-189BA4EF2557} = {C737365D-8782-42DE-AB91-62E404AC82E7}
+		{76092FCE-B67D-476B-9B59-F6F5F92325D2} = {C737365D-8782-42DE-AB91-62E404AC82E7}
+		{2883F573-D096-4C32-964F-EE57FC4B823D} = {C737365D-8782-42DE-AB91-62E404AC82E7}
+	EndGlobalSection
+EndGlobal

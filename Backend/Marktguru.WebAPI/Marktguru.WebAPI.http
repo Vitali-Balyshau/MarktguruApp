@@ -1,0 +1,6 @@
+@Marktguru.WebAPI_HostAddress = http://localhost:5241
+
+GET {{Marktguru.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
