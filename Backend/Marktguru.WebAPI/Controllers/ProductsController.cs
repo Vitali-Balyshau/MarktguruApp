@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Marktguru.BusinessLayer.Interfaces;
 using Marktguru.BusinessLayer.BusinessEntities;
 

@@ -13,6 +13,8 @@ namespace Marktguru.BusinessLayer.Extensions
             services.RegisterRepositories(configuration);
             
             services.AddScoped<IProductModelBusiness, ProductModelBusiness>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserAccountBusiness, UserAccountBusiness>();
 
             return services;
         }

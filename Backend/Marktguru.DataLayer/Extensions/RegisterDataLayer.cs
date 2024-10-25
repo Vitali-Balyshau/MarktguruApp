@@ -11,6 +11,7 @@ namespace Marktguru.DataLayer.Extensions
         public static IServiceCollection RegisterRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IProductModelRepository, ProductModelRepository>();
+            services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 
             services.AddDbContext<DataContext>(options =>
                 {
