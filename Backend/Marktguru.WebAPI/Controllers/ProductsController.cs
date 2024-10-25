@@ -8,16 +8,16 @@ namespace Marktguru.WebAPI.Controllers
 {
     public class ProductsController: BaseApiController
     {
-        private readonly IProductModelBusiness _product;
-        public ProductsController(IProductModelBusiness product)
+        private readonly IProductModelBusiness _productBusiness;
+        public ProductsController(IProductModelBusiness productBusiness)
         {
-            _product = product;
+            _productBusiness = productBusiness;
         }
 
         [HttpGet("list")]
-        public async Task<ActionResult<List<ProductModelDto>>> GetAllProductsAsync()
+        public async Task<ActionResult<List<ShortProductModelDto>>> GetAllProductsAsync()
         {
-            return await _product.GetProductModelsAsync();
+            return await _productBusiness.GetProductModelsAsync();
         }
     }
 }

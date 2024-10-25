@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Marktguru.DataLayer.DataEntities
 {
@@ -16,6 +17,7 @@ namespace Marktguru.DataLayer.DataEntities
         [MaxLength(100)]
         public string  ProductName { get; set; }
     
+        [Column(TypeName = "REAL")]
         public decimal Price { get; set; }
 
         public bool Available { get; set; }

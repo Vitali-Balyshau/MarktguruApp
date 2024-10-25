@@ -5,6 +5,6 @@ namespace Marktguru.BusinessLayer.Interfaces
 {
     public interface IProductModelBusiness
     {
-        Task<List<ProductModelDto>> GetProductModelsAsync();
+        Task<List<ShortProductModelDto>> GetProductModelsAsync();
     }
 }
