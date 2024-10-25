@@ -1,12 +1,10 @@
 namespace Marktguru.BusinessLayer.BusinessEntities
 {
-    public class ProductModelDto
+    public class ShortProductModelDto
     {
-        public ProductModelDto()
+        public ShortProductModelDto()
         {
             ProductName = String.Empty;
-            ProductDescription = String.Empty;
-            DateCreated = DateTime.Now;
         }
 
         public int Id { get; set; }
@@ -16,9 +14,5 @@ namespace Marktguru.BusinessLayer.BusinessEntities
         public decimal Price { get; set; }
 
         public bool Available { get; set; }
-
-        public string  ProductDescription { get; set; }
-
-        public DateTime DateCreated { get; set; }
     }
 }
