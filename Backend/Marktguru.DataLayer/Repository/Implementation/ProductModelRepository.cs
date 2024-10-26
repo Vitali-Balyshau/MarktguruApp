@@ -66,5 +66,10 @@ namespace Marktguru.DataLayer.Repository.Implementation
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task DeleteProductAsync(int id)
+        {
+            await _context.ProductModels.Where(x => x.Id == id).ExecuteDeleteAsync();
+        }
     }
 }

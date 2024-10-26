@@ -95,5 +95,17 @@ namespace Marktguru.BusinessLayer.Implementation
                 throw new ConcurrencyDataUpdateConflictException("Product", ex);
             }
         }
+
+        public async Task DeleteProductAsync(int id)
+        {
+            ProductModel? product = await _productModelRepository.GetProductByIdAsync(id);
+
+            if (product == null)
+            {
+                throw new ProductDoesNotExistException(id);
+            }
+
+            await _productModelRepository.DeleteProductAsync(id);
+        }
     }
 }

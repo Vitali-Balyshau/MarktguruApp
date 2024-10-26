@@ -12,5 +12,7 @@ namespace Marktguru.BusinessLayer.Interfaces
         Task<FullProductModelDto> AddNewProductAsync(FullProductModelDto newProduct);
 
         Task UpdateProductAsync(FullProductModelDto updateProduct);
+
+        Task DeleteProductAsync(int id);
     }
 }

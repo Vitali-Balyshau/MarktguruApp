@@ -73,5 +73,21 @@ namespace Marktguru.WebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProductAsync(int id)
+        {
+            try
+            {
+                await _productBusiness.DeleteProductAsync(id);
+
+                return Ok();
+            }
+            catch(ProductDoesNotExistException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
