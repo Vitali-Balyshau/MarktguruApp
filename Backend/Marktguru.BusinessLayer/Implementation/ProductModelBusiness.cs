@@ -3,6 +3,7 @@ using Marktguru.BusinessLayer.BusinessEntities;
 using Marktguru.BusinessLayer.Interfaces;
 using Marktguru.DataLayer.Repository.Interfaces;
 using Marktguru.DataLayer.DataEntities;
+using Marktguru.BusinessLayer.Exceptions;
 
 namespace Marktguru.BusinessLayer.Implementation
 {
@@ -51,6 +52,27 @@ namespace Marktguru.BusinessLayer.Implementation
             }).ToList();
 
             return result;
+        }
+
+        public async Task<FullProductModelDto> AddNewProduct(FullProductModelDto newProduct)
+        {
+            //Validate if product exists
+            ProductModel? product = await _productModelRepository.GetProductByNameAsync(newProduct.ProductName);
+
+            if (product != null)
+            {
+                throw new ProductAlreadyExistsException(product.ProductName);
+            }
+
+            DateTime productCreationDate = DateTime.Now;
+
+            int newProductId = await _productModelRepository.AddNewProductModel(newProduct.ProductName, newProduct.Price, newProduct.Description, 
+                newProduct.Available, productCreationDate);
+
+            newProduct.Id = newProductId;
+            newProduct.DateCreated = productCreationDate;
+
+            return newProduct;
         }
     }
 }
