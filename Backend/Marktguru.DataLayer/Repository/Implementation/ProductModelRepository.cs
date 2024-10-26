@@ -35,6 +35,7 @@ namespace Marktguru.DataLayer.Repository.Implementation
             newProduct.ProductDescription = description;
             newProduct.Available = available;
             newProduct.DateCreated = creationDate;
+            newProduct.Version = Guid.NewGuid();
 
             _context.ProductModels.Add(newProduct);
             await _context.SaveChangesAsync();
@@ -60,6 +61,7 @@ namespace Marktguru.DataLayer.Repository.Implementation
                 product.ProductDescription = description;
                 product.Available = available;
                 product.DateCreated = creationDate;
+                product.Version = Guid.NewGuid();
 
                 await _context.SaveChangesAsync();
             }

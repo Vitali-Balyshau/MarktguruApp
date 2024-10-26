@@ -4,6 +4,7 @@ using Marktguru.BusinessLayer.Interfaces;
 using Marktguru.DataLayer.Repository.Interfaces;
 using Marktguru.DataLayer.DataEntities;
 using Marktguru.BusinessLayer.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Marktguru.BusinessLayer.Implementation
 {
@@ -84,8 +85,15 @@ namespace Marktguru.BusinessLayer.Implementation
                 throw new ProductDoesNotExistException(updateProduct.Id);
             }
 
-            await _productModelRepository.UpdateProductModelAsync(updateProduct.Id, updateProduct.ProductName, updateProduct.Price, 
-                updateProduct.Description, updateProduct.Available, updateProduct.DateCreated);
+            try
+            {
+                await _productModelRepository.UpdateProductModelAsync(updateProduct.Id, updateProduct.ProductName, updateProduct.Price, 
+                    updateProduct.Description, updateProduct.Available, updateProduct.DateCreated);
+            }
+            catch(DbUpdateConcurrencyException ex)
+            {
+                throw new ConcurrencyDataUpdateConflictException("Product", ex);
+            }
         }
     }
 }

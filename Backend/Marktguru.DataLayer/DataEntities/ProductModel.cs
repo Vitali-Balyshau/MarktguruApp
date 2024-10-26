@@ -26,5 +26,8 @@ namespace Marktguru.DataLayer.DataEntities
         public string  ProductDescription { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        [ConcurrencyCheck]
+        public Guid Version { get; set; }
     }
 }

@@ -68,6 +68,10 @@ namespace Marktguru.WebAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+            catch(ConcurrencyDataUpdateConflictException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
