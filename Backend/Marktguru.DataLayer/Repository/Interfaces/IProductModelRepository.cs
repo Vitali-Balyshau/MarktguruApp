@@ -12,5 +12,7 @@ namespace Marktguru.DataLayer.Repository.Interfaces
         Task<int> AddNewProductModel(string productName, decimal preis, string description, bool available, DateTime creationDate);
 
         Task<ProductModel?> GetProductByNameAsync(string productName);
+
+        Task UpdateProductModelAsync(int id, string productName, decimal preis, string description, bool available, DateTime creationDate);
     }
 }

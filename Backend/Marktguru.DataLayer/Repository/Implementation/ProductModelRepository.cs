@@ -35,6 +35,7 @@ namespace Marktguru.DataLayer.Repository.Implementation
             newProduct.ProductDescription = description;
             newProduct.Available = available;
             newProduct.DateCreated = creationDate;
+            newProduct.Version = Guid.NewGuid();
 
             _context.ProductModels.Add(newProduct);
             await _context.SaveChangesAsync();
@@ -47,6 +48,23 @@ namespace Marktguru.DataLayer.Repository.Implementation
         public async Task<ProductModel?> GetProductByNameAsync(string productName)
         {
             return await _context.ProductModels.Where(x => x.ProductName == productName).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateProductModelAsync(int id, string productName, decimal preis, string description, bool available, DateTime creationDate)
+        {
+            ProductModel? product = await _context.ProductModels.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (product != null)
+            {
+                product.ProductName = productName;
+                product.Price = preis;
+                product.ProductDescription = description;
+                product.Available = available;
+                product.DateCreated = creationDate;
+                product.Version = Guid.NewGuid();
+
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

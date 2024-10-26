@@ -4,6 +4,7 @@ using Marktguru.BusinessLayer.Interfaces;
 using Marktguru.DataLayer.Repository.Interfaces;
 using Marktguru.DataLayer.DataEntities;
 using Marktguru.BusinessLayer.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Marktguru.BusinessLayer.Implementation
 {
@@ -54,7 +55,7 @@ namespace Marktguru.BusinessLayer.Implementation
             return result;
         }
 
-        public async Task<FullProductModelDto> AddNewProduct(FullProductModelDto newProduct)
+        public async Task<FullProductModelDto> AddNewProductAsync(FullProductModelDto newProduct)
         {
             //Validate if product exists
             ProductModel? product = await _productModelRepository.GetProductByNameAsync(newProduct.ProductName);
@@ -73,6 +74,26 @@ namespace Marktguru.BusinessLayer.Implementation
             newProduct.DateCreated = productCreationDate;
 
             return newProduct;
+        }
+
+        public async Task UpdateProductAsync(FullProductModelDto updateProduct)
+        {
+            ProductModel? product = await _productModelRepository.GetProductByIdAsync(updateProduct.Id);
+
+            if (product == null)
+            {
+                throw new ProductDoesNotExistException(updateProduct.Id);
+            }
+
+            try
+            {
+                await _productModelRepository.UpdateProductModelAsync(updateProduct.Id, updateProduct.ProductName, updateProduct.Price, 
+                    updateProduct.Description, updateProduct.Available, updateProduct.DateCreated);
+            }
+            catch(DbUpdateConcurrencyException ex)
+            {
+                throw new ConcurrencyDataUpdateConflictException("Product", ex);
+            }
         }
     }
 }
