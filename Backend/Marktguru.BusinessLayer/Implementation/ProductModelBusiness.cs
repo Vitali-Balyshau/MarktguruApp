@@ -15,6 +15,27 @@ namespace Marktguru.BusinessLayer.Implementation
             _productModelRepository = productModelRepository;
         }
 
+        public async Task<FullProductModelDto?> GetProductByIdAsync(int id)
+        {
+            FullProductModelDto? result = null;
+
+            ProductModel? product = await _productModelRepository.GetProductByIdAsync(id);
+
+            if (product != null)
+            {
+                //Can be done by AutoMapper
+                result = new FullProductModelDto();
+                result.Id = product.Id;
+                result.ProductName = product.ProductName;
+                result.Available = product.Available;
+                result.Description = product.ProductDescription;
+                result.Price = product.Price;
+                result.DateCreated = product.DateCreated;
+            }
+
+            return result;
+        }
+
         public async Task<List<ShortProductModelDto>> GetProductModelsAsync()
         {
             List<ShortProductModelDto> result = new List<ShortProductModelDto>();
