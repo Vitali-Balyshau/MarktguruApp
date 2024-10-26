@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Marktguru.BusinessLayer.BusinessEntities
 {
@@ -12,12 +13,18 @@ namespace Marktguru.BusinessLayer.BusinessEntities
 
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(100)]
         public string  ProductName { get; set; }
         
+        [Required]
         public decimal Price { get; set; }
 
+        [Required]
         public bool Available { get; set; }
 
+        [Required]
+        [MaxLength(100)]
         public string Description { get; set; }
 
         public DateTime DateCreated { get; set; }

@@ -54,7 +54,7 @@ namespace Marktguru.BusinessLayer.Implementation
             return result;
         }
 
-        public async Task<FullProductModelDto> AddNewProduct(FullProductModelDto newProduct)
+        public async Task<FullProductModelDto> AddNewProductAsync(FullProductModelDto newProduct)
         {
             //Validate if product exists
             ProductModel? product = await _productModelRepository.GetProductByNameAsync(newProduct.ProductName);
@@ -73,6 +73,19 @@ namespace Marktguru.BusinessLayer.Implementation
             newProduct.DateCreated = productCreationDate;
 
             return newProduct;
+        }
+
+        public async Task UpdateProductAsync(FullProductModelDto updateProduct)
+        {
+            ProductModel? product = await _productModelRepository.GetProductByIdAsync(updateProduct.Id);
+
+            if (product == null)
+            {
+                throw new ProductDoesNotExistException(updateProduct.Id);
+            }
+
+            await _productModelRepository.UpdateProductModelAsync(updateProduct.Id, updateProduct.ProductName, updateProduct.Price, 
+                updateProduct.Description, updateProduct.Available, updateProduct.DateCreated);
         }
     }
 }

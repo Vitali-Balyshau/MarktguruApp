@@ -48,5 +48,21 @@ namespace Marktguru.DataLayer.Repository.Implementation
         {
             return await _context.ProductModels.Where(x => x.ProductName == productName).FirstOrDefaultAsync();
         }
+
+        public async Task UpdateProductModelAsync(int id, string productName, decimal preis, string description, bool available, DateTime creationDate)
+        {
+            ProductModel? product = await _context.ProductModels.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (product != null)
+            {
+                product.ProductName = productName;
+                product.Price = preis;
+                product.ProductDescription = description;
+                product.Available = available;
+                product.DateCreated = creationDate;
+
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

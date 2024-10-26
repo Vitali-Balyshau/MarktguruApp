@@ -42,11 +42,29 @@ namespace Marktguru.WebAPI.Controllers
         {
             try
             {
-                FullProductModelDto addedProduct = await _productBusiness.AddNewProduct(newProduct);
+                FullProductModelDto addedProduct = await _productBusiness.AddNewProductAsync(newProduct);
 
                 return Ok(addedProduct);
             }
             catch(ProductAlreadyExistsException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut("update/{id}")]
+        public async Task<ActionResult<FullProductModelDto>> UpdateProductAsync(int id, [FromBody]FullProductModelDto updateProduct)
+        {
+            try
+            {
+                updateProduct.Id = id;
+
+                await _productBusiness.UpdateProductAsync(updateProduct);
+
+                return NoContent();
+            }
+            catch(ProductDoesNotExistException ex)
             {
                 return BadRequest(ex.Message);
             }

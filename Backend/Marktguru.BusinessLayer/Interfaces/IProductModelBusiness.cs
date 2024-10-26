@@ -9,6 +9,8 @@ namespace Marktguru.BusinessLayer.Interfaces
 
         Task<FullProductModelDto?> GetProductByIdAsync(int id);
 
-        Task<FullProductModelDto> AddNewProduct(FullProductModelDto newProduct);
+        Task<FullProductModelDto> AddNewProductAsync(FullProductModelDto newProduct);
+
+        Task UpdateProductAsync(FullProductModelDto updateProduct);
     }
 }
