@@ -19,5 +19,20 @@ namespace Marktguru.WebAPI.Controllers
         {
             return await _productBusiness.GetProductModelsAsync();
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<FullProductModelDto>> GetProductByIdAsync(int id)
+        {
+            FullProductModelDto? product = await _productBusiness.GetProductByIdAsync(id);
+
+            if (product != null)
+            {
+                return product;
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
