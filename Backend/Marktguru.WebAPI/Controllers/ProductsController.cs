@@ -17,7 +17,7 @@ namespace Marktguru.WebAPI.Controllers
         [HttpGet("list")]
         public async Task<ActionResult<List<ShortProductModelDto>>> GetAllProductsAsync()
         {
-            return await _productBusiness.GetProductModelsAsync();
+            return Ok(await _productBusiness.GetProductModelsAsync());
         }
 
         [HttpGet("{id}")]
@@ -27,12 +27,21 @@ namespace Marktguru.WebAPI.Controllers
 
             if (product != null)
             {
-                return product;
+                return Ok(product);
             }
             else
             {
                 return NotFound();
             }
+        }
+
+        [Authorize]
+        [HttpPost("add")]
+        public async Task<ActionResult<FullProductModelDto>> AddNewProductAsync(FullProductModelDto newProduct)
+        {
+            FullProductModelDto addedProduct = await _productBusiness.AddNewProduct(newProduct);
+
+            return Ok(addedProduct);
         }
     }
 }

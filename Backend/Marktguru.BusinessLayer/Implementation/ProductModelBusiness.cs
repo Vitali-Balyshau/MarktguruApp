@@ -52,5 +52,20 @@ namespace Marktguru.BusinessLayer.Implementation
 
             return result;
         }
+
+        public async Task<FullProductModelDto> AddNewProduct(FullProductModelDto newProduct)
+        {
+            //Validate here if product exists
+
+            DateTime productCreationDate = DateTime.Now;
+
+            int newProductId = await _productModelRepository.AddNewProductModel(newProduct.ProductName, newProduct.Price, newProduct.Description, 
+                newProduct.Available, productCreationDate);
+
+            newProduct.Id = newProductId;
+            newProduct.DateCreated = productCreationDate;
+
+            return newProduct;
+        }
     }
 }
