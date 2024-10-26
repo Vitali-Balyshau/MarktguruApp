@@ -43,5 +43,10 @@ namespace Marktguru.DataLayer.Repository.Implementation
 
             return newProductId;
         }
+
+        public async Task<ProductModel?> GetProductByNameAsync(string productName)
+        {
+            return await _context.ProductModels.Where(x => x.ProductName == productName).FirstOrDefaultAsync();
+        }
     }
 }

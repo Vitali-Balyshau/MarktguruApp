@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Marktguru.BusinessLayer.Interfaces;
 using Marktguru.BusinessLayer.BusinessEntities;
+using Marktguru.BusinessLayer.Exceptions;
 
 namespace Marktguru.WebAPI.Controllers
 {
@@ -39,9 +40,16 @@ namespace Marktguru.WebAPI.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<FullProductModelDto>> AddNewProductAsync(FullProductModelDto newProduct)
         {
-            FullProductModelDto addedProduct = await _productBusiness.AddNewProduct(newProduct);
+            try
+            {
+                FullProductModelDto addedProduct = await _productBusiness.AddNewProduct(newProduct);
 
-            return Ok(addedProduct);
+                return Ok(addedProduct);
+            }
+            catch(ProductAlreadyExistsException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
