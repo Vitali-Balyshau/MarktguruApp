@@ -14,5 +14,7 @@ namespace Marktguru.DataLayer.Repository.Interfaces
         Task<ProductModel?> GetProductByNameAsync(string productName);
 
         Task UpdateProductModelAsync(int id, string productName, decimal preis, string description, bool available, DateTime creationDate);
+
+        Task DeleteProductAsync(int id);
     }
 }
