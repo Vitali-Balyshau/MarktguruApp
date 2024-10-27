@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "7a78616c-0d0e-4ff6-b8a0-be628cd9a2a3",
+		"name": "MarktguruApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"user1\",\r\n    \"password\": \"Password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/account/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjEiLCJuYmYiOjE3Mjk4ODU5OTgsImV4cCI6MTczMDQ5NDM5OCwiaWF0IjoxNzI5ODg1OTk4fQ.uH4NliBatDdBXeN_-sOUem-je6piFs0haB3WFTNyIzE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Product New 4\",\r\n    \"price\": 999.99,\r\n    \"available\": true,\r\n    \"description\": \"Product New 4 Description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/products/add",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjEiLCJuYmYiOjE3Mjk4ODU5OTgsImV4cCI6MTczMDQ5NDM5OCwiaWF0IjoxNzI5ODg1OTk4fQ.uH4NliBatDdBXeN_-sOUem-je6piFs0haB3WFTNyIzE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"UPDATE - Product New 3 blablba\",\r\n    \"price\": 333.33,\r\n    \"available\": false,\r\n    \"description\": \"UPDATE - Product New 3 Description\",\r\n    \"dateCreated\": \"2024-11-11T11:11:11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/products/update/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProduct",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjEiLCJuYmYiOjE3Mjk4ODU5OTgsImV4cCI6MTczMDQ5NDM5OCwiaWF0IjoxNzI5ODg1OTk4fQ.uH4NliBatDdBXeN_-sOUem-je6piFs0haB3WFTNyIzE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/products/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5241/api"
+		}
+	]
+}
